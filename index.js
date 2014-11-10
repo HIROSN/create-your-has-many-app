@@ -17,4 +17,4 @@ handlers['/get']  = require('./modules/get_handler');
   console.log(str);
 })();
 
-server(router(handlers), process.env.PORT || 3000);
+server(process.env.PORT || 3000, router(handlers));

@@ -31,4 +31,26 @@ describe('Simple GET/POST tests', function() {
         done();
       });
   });
+
+  it('it should return 200 for GET request for /', function(done) {
+    chai.request(server).
+      get('/').
+      end(function(err, res) {
+        expect(err).to.equal(null);
+        expect(res).to.be.a('object');
+        expect(res).to.have.status(200);
+        done();
+      });
+  });
+
+  it('it should return 404 for GET request for /nohandler', function(done) {
+    chai.request(server).
+      get('/nohandler').
+      end(function(err, res) {
+        expect(err).to.equal(null);
+        expect(res).to.be.a('object');
+        expect(res).to.have.status(404);
+        done();
+      });
+  });
 });
